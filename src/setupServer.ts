@@ -10,7 +10,7 @@ import compression from 'compression';
 
 const SERVER_PORT = 5000; //IMP as it will be used in aws also
 
-export class HiChatServer{
+export class HiChatServer{ //we have changed the name of class: chattyServer to HiChatServer
     private app: Application; 
 
     constructor(app: Application){
