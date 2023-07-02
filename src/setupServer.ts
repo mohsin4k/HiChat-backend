@@ -3,10 +3,14 @@ import http from 'http';
 import cors from 'cors';
 import helmet from 'helmet';
 import hpp from 'hpp';
-import cookierSession from 'cookie-session';
+import cookieSession from 'cookie-session';
 import HTTP_STATUS from 'http-status-codes';
+import {Server} from 'socket.io'
+import { createClient } from 'redis';
+import { createAdapter } from '@socket.io/redis-adapter';
 import 'express-async-errors';
 import compression from 'compression';
+import {config} from './config';
 
 const SERVER_PORT = 5000; //IMP as it will be used in aws also
 
@@ -28,13 +32,11 @@ export class HiChatServer{ //we have changed the name of class: chattyServer to 
     private securityMiddleware(app: Application): void
     {
         app.use(
-            cookierSession({
+            cookieSession({
                 name: 'session',
-                keys: ['test1','test2'],
+                keys: [config.SECRET_KEY_ONE!,config.SECRET_KEY_TWO!],
                 maxAge: 24*7*3600000,
-                secure: false
-
-
+                secure: config.NODE_ENV !== 'development'
             })
         );
         
@@ -42,7 +44,7 @@ export class HiChatServer{ //we have changed the name of class: chattyServer to 
         app.use(helmet());
         app.use(
             cors({
-                origin: '*',
+                origin: config.CLIENT_URL,
                 credentials: true, //cookies will not work if credentials is not set true
                 optionsSuccessStatus: 200,
                 methods: ['GET','POST','PUT','DELETE','OPTIONS']
@@ -67,20 +69,40 @@ export class HiChatServer{ //we have changed the name of class: chattyServer to 
     {
         try{
             const httpServer: http.Server=new http.Server(app); // here we are naming the method as server but has http.Server becoz socket.io has a similar method named Server so in order to avoid any issue in future we are using http.Server
+            const socketIO: Server = await this.createSocketIO(httpServer);
             this.startHttpServer(httpServer);
+            this.socketIOConnections(socketIO);
         }
         catch(error){
             console.log(error);
         }
     }
 
-    private createSocketIO(httpServer: http.Server): void{}
+    private async createSocketIO(httpServer: http.Server): Promise<Server>{
+        const io: Server = new Server(httpServer, {
+            cors: {
+                origin: config.CLIENT_URL,
+                methods: ['GET','POST','PUT','DELETE','OPTIONS']
+            }
+        });
+        const pubClient = createClient({url: config.REDIS_HOST});
+        const subClient = pubClient.duplicate(); 
+        await Promise.all([pubClient.connect(), subClient.connect()]);
+        io.adapter(createAdapter(pubClient, subClient));
+
+        return io; 
+    }
 
     private startHttpServer(httpServer: http.Server): void
     {
+        console.log(`Server has started with process ${process.pid}`);
         httpServer.listen(SERVER_PORT, () => {
         console.log(`Server running on port ${SERVER_PORT}`); // node js suggest not using console.log so in future we will also be using log library as it is more lightweight
         });
+    }
+
+    private socketIOConnections(io: Server):void {
+
     }
 
 }
