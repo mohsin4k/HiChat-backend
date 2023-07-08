@@ -13,9 +13,11 @@ import 'express-async-errors';
 import compression from 'compression';
 import {config} from './config';
 import applicationRoutes from './routes';
+import Logger from 'bunyan';
 
 
 const SERVER_PORT = 5000; //IMP as it will be used in aws also
+const log: Logger = config.createLogger('server');
 
 export class HiChatServer{ //we have changed the name of class: chattyServer to HiChatServer
     private app: Application; 
@@ -74,7 +76,7 @@ export class HiChatServer{ //we have changed the name of class: chattyServer to 
         });
 
         app.use((error: IErrorResponse , req: Request, res: Response, next: NextFunction) => {
-            console.log(error);
+            log.error(error);
 
             if(error instanceof CustomError){
                 return res.status(error.statusCode).json(error.serializeErrors());
@@ -92,7 +94,7 @@ export class HiChatServer{ //we have changed the name of class: chattyServer to 
             this.socketIOConnections(socketIO);
         }
         catch(error){
-            console.log(error);
+            log.error(error);
         }
     }
 
@@ -113,9 +115,9 @@ export class HiChatServer{ //we have changed the name of class: chattyServer to 
 
     private startHttpServer(httpServer: http.Server): void
     {
-        console.log(`Server has started with process ${process.pid}`);
+        log.info(`Server has started with process ${process.pid}`);
         httpServer.listen(SERVER_PORT, () => {
-        console.log(`Server running on port ${SERVER_PORT}`); // node js suggest not using console.log so in future we will also be using log library as it is more lightweight
+        log.info(`Server running on port ${SERVER_PORT}`); // node js suggest not using console.log so in future we will also be using log library as it is more lightweight
         });
     }
 

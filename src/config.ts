@@ -1,6 +1,6 @@
 // This is the config file
 import dotenv from 'dotenv';
-
+import bunyan from 'bunyan';
 dotenv.config({});
 
 class Config {
@@ -21,6 +21,10 @@ class Config {
         this.SECRET_KEY_TWO = process.env.SECRET_KEY_TWO || '';
         this.CLIENT_URL = process.env.CLIENT_URL || '';
         this.REDIS_HOST = process.env.REDIS_HOST || '';
+    }
+
+    public createLogger(name: string): bunyan{
+        return bunyan.createLogger({name, level:'debug'});
     }
 
     //this function just checks whether the member variables are defined or not!!!!
