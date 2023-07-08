@@ -1,3 +1,4 @@
+// This is the config file
 import dotenv from 'dotenv';
 
 dotenv.config({});
