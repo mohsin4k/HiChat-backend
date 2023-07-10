@@ -1,4 +1,3 @@
-import { CustomError, IErrorResponse } from './shared/globals/helpers/error-handler';
 import { Application, json, urlencoded, Response, Request, NextFunction } from 'express';
 import http from 'http';
 import cors from 'cors';
@@ -11,9 +10,10 @@ import { createClient } from 'redis';
 import { createAdapter } from '@socket.io/redis-adapter';
 import 'express-async-errors';
 import compression from 'compression';
-import { config } from './config';
-import applicationRoutes from './routes';
+import { config } from '@root/config';
+import applicationRoutes from '@root/routes';
 import Logger from 'bunyan';
+import { CustomError, IErrorResponse } from '@global/helpers/error-handler';
 
 const SERVER_PORT = 5000; //IMP as it will be used in aws also
 const log: Logger = config.createLogger('server');
@@ -115,6 +115,6 @@ export class HiChatServer {
   }
 
   private socketIOConnections(io: Server): void {
-    console.log();
+    log.info();
   }
 }
