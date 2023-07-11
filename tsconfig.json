@@ -37,7 +37,7 @@
       "@service/*": ["src/shared/services/*"],
       "@socket/*": ["src/shared/sockets/*"],
       "@worker/*": ["src/shared/workers/*"],
-      "@root/*": ["src/*"]
+      "@root/*": ["src/*"] //this line should always come at last as if we put this first all the things below this will be overridden by this path
     }
   }
 }
