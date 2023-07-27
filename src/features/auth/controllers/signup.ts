@@ -11,6 +11,8 @@ import { UploadApiResponse } from 'cloudinary';
 import { uploads } from '@global/helpers/cloudinary-upload';
 import { IUserDocument } from '@user/interfaces/user.interface';
 import { UserCache } from '@service/redis/user.cache';
+import { omit } from 'lodash';
+import { authQueue } from '@service/queues/auth.queue';
 
 const userCache: UserCache = new UserCache();
 
@@ -43,6 +45,10 @@ export class SignUp{
     const userDataForCache: IUserDocument = SignUp.prototype.userData(authData, userObjectId);
     userDataForCache.profilePicture = `https://res.cloudinary.com/da1xnru4v/image/upload/v${result.version}/${userObjectId}`;
     await userCache.saveUserToCache(`${userObjectId}`, uId, userDataForCache);
+
+    //Add to Database
+    omit(userDataForCache, ['uId', 'username','email','avatarColor', 'password']);
+    authQueue.addAuthUserJob('addAuthUserToDB', { value: userDataForCache });
 
     res.status(HTTP_STATUS.CREATED).json({message: 'User created successfully', authData});
   }

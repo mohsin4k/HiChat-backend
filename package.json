@@ -15,7 +15,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@bull-board/express": "^5.6.0",
+    "@bull-board/express": "^5.7.1",
+    "@bull-board/ui": "^5.7.1",
     "@faker-js/faker": "^8.0.2",
     "@jest/types": "^29.6.1",
     "@sendgrid/mail": "^7.7.0",
@@ -53,6 +54,7 @@
     "typescript-transform-paths": "^3.4.6"
   },
   "devDependencies": {
+    "@types/bull": "^4.10.0",
     "@types/bunyan": "^1.8.8",
     "@types/compression": "^1.7.2",
     "@types/cookie-session": "^2.0.44",
