@@ -7,7 +7,7 @@ import { config } from '@root/config';
 import { IAuthJob } from '@auth/interfaces/auth.interface';
 
 type IBaseJobData =
-  | IAuthJob
+  | IAuthJob;
 
 let bullAdapters: BullAdapter[] = [];
 
