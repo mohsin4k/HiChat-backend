@@ -40,3 +40,24 @@ Content-Type: application/json
 Accept: application/json
 withCredentials: true
 
+###
+POST {{baseUrl}}/{{urlPath}}/forgot-password
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "email": "dan@test.com"
+}
+
+###
+POST {{baseUrl}}/{{urlPath}}/reset-password/
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "password": "querty1",
+  "confirmPassword": "querty1"
+}
+
