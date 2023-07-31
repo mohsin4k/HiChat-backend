@@ -24,7 +24,7 @@ withCredentials: true
 
 {
   "username": "danny",
-  "password": "querty"
+  "password": "querty1"
 }
 
 
@@ -51,7 +51,7 @@ withCredentials: true
 }
 
 ###
-POST {{baseUrl}}/{{urlPath}}/reset-password/
+POST {{baseUrl}}/{{urlPath}}/reset-password/bf7c1383e62a7e403c2320904302aa84992dffcf
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
