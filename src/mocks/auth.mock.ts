@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { Response } from 'express';
 import { AuthPayload, IAuthDocument } from '@auth/interfaces/auth.interface';
 
@@ -35,7 +36,7 @@ export interface IAuthMock {
 export const authUserPayload: AuthPayload = {
   userId: '60263f14648fed5246e322d9',
   uId: '1621613119252066',
-  username: 'Manny',
+  username: 'danny',
   email: 'danny@me.com',
   avatarColor: '#9c27b0',
   iat: 12345
@@ -48,7 +49,6 @@ export const authMock = {
   email: 'danny@me.com',
   avatarColor: '#9c27b0',
   createdAt: new Date(),
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   save: () => {}
 } as unknown as IAuthDocument;
 
@@ -76,5 +76,5 @@ export const signUpMockData = {
   followersCount: 0,
   followingCount: 0,
   notifications: { messages: true, reactions: true, comments: true, follows: true },
-  profilePicture: 'https://res.cloudinary.com/da1xnru4v/image/upload/v1690541673/64c39e675f5517f7faebb525'
+  profilePicture: 'https://res.cloudinary.com/ratingapp/image/upload/605727cd646eb50e668a4e13'
 };

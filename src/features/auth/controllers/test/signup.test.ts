@@ -80,7 +80,7 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Danny',
+        username: 'danny',
         email: 'not valid',
         password: 'qwerty',
         avatarColor: 'red',
@@ -98,7 +98,7 @@ describe('SignUp', () => {
   it('should throw an error if email is not available', () => {
     const req: Request = authMockRequest(
       {},
-      { username: 'Danny', email: '', password: 'qwerty', avatarColor: 'red', avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==' }
+      { username: 'danny', email: '', password: 'qwerty', avatarColor: 'red', avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==' }
     ) as Request;
     const res: Response = authMockResponse();
     SignUp.prototype.create(req, res).catch((error: CustomError) => {
@@ -111,7 +111,7 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Danny',
+        username: 'danny',
         email: 'danny@test.com',
         password: '',
         avatarColor: 'red',
@@ -129,7 +129,7 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Danny',
+        username: 'danny',
         email: 'danny@test.com',
         password: 'ma',
         avatarColor: 'red',
@@ -147,7 +147,7 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Danny',
+        username: 'danny',
         email: 'danny@test.com',
         password: 'mathematics1',
         avatarColor: 'red',
@@ -165,7 +165,7 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Danny',
+        username: 'danny',
         email: 'danny@test.com',
         password: 'qwerty',
         avatarColor: 'red',
@@ -185,7 +185,7 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Danny',
+        username: 'danny',
         email: 'danny@test.com',
         password: 'qwerty',
         avatarColor: 'red',
