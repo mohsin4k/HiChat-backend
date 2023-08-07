@@ -14,6 +14,7 @@ import { config } from '@root/config';
 import applicationRoutes from '@root/routes';
 import Logger from 'bunyan';
 import { CustomError, IErrorResponse } from '@global/helpers/error-handler';
+import { SocketIOPostHandler } from '@socket/post';
 
 const SERVER_PORT = 5000; //IMP as it will be used in aws also
 const log: Logger = config.createLogger('server');
@@ -39,7 +40,7 @@ export class HiChatServer {
       cookieSession({
         name: 'session',
         keys: [config.SECRET_KEY_ONE!, config.SECRET_KEY_TWO!],
-        maxAge: 5000,
+        maxAge: 24*7*3600000,
         secure: config.NODE_ENV !== 'development'
       })
     );
@@ -115,6 +116,8 @@ export class HiChatServer {
   }
 
   private socketIOConnections(io: Server): void {
-    log.info();
+    const postSocketHandler: SocketIOPostHandler = new SocketIOPostHandler(io);
+
+    postSocketHandler.listen();
   }
 }
