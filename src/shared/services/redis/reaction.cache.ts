@@ -26,7 +26,6 @@ export class ReactionCache extends BaseCache {
       }
 
       if (previousReaction) {
-        // call remove reaction method
         this.removePostReactionFromCache(key, reaction.username, postReactions);
       }
 
