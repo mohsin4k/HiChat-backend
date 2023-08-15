@@ -15,3 +15,11 @@ withCredentials: true
   "postReactions": 	{"like":0,"love":0,"happy":0,"sad":0,"wow":1,"angry":0},
   "profilePicture": "https://res.cloudinary.com/da1xnru4v/image/upload/v1690541673/64c39e675f5517f7faebb525"
 }
+
+###
+DELETE {{baseUrl}}/{{urlPath}}/post/reaction/64db5f49e52e07570c1ddd70/wow/{"like": 0,"love": 0,"happy": 0,"sad": 0,"wow": 0,"angry": 0}
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{}
