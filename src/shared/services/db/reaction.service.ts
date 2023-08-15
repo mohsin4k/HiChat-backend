@@ -51,27 +51,27 @@ class ReactionService {
     ]);
   }
 
-  // public async getPostReactions(query: IQueryReaction, sort: Record<string, 1 | -1>): Promise<[IReactionDocument[], number]> {
-  //   const reactions: IReactionDocument[] = await ReactionModel.aggregate([
-  //     { $match: query },
-  //     { $sort: sort }
-  //   ]);
-  //   return [reactions, reactions.length];
-  // }
+  public async getPostReactions(query: IQueryReaction, sort: Record<string, 1 | -1>): Promise<[IReactionDocument[], number]> {
+    const reactions: IReactionDocument[] = await ReactionModel.aggregate([
+      { $match: query },
+      { $sort: sort }
+    ]);
+    return [reactions, reactions.length];
+  }
 
-  // public async getSinglePostReactionByUsername(postId: string, username: string): Promise<[IReactionDocument, number] | []> {
-  //   const reactions: IReactionDocument[] = await ReactionModel.aggregate([
-  //     { $match: { postId: new mongoose.Types.ObjectId(postId), username: Helpers.firstLetterUppercase(username) } },
-  //   ]);
-  //   return reactions.length ? [reactions[0], 1] : [];
-  // }
+  public async getSinglePostReactionByUsername(postId: string, username: string): Promise<[IReactionDocument, number] | []> {
+    const reactions: IReactionDocument[] = await ReactionModel.aggregate([
+      { $match: { postId: new mongoose.Types.ObjectId(postId), username: Helpers.firstLetterUppercase(username) } },
+    ]);
+    return reactions.length ? [reactions[0], 1] : [];
+  }
 
-  // public async getReactionsByUsername(username: string): Promise<IReactionDocument[]> {
-  //   const reactions: IReactionDocument[] = await ReactionModel.aggregate([
-  //     { $match: { username: Helpers.firstLetterUppercase(username) } },
-  //   ]);
-  //   return reactions;
-  // }
+  public async getReactionsByUsername(username: string): Promise<IReactionDocument[]> {
+    const reactions: IReactionDocument[] = await ReactionModel.aggregate([
+      { $match: { username: Helpers.firstLetterUppercase(username) } },
+    ]);
+    return reactions;
+  }
 }
 
 export const reactionService: ReactionService = new ReactionService();
