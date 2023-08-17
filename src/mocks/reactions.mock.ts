@@ -2,6 +2,7 @@ import { Response } from 'express';
 import { AuthPayload } from '@auth/interfaces/auth.interface';
 import { IReactionDocument, IReactions } from '@reaction/interfaces/reaction.interface';
 import { IJWT } from './auth.mock';
+import { ICommentDocument, ICommentNameList } from '@comment/interfaces/comment.interface';
 
 export const reactionMockRequest = (sessionData: IJWT, body: IBody, currentUser?: AuthPayload | null, params?: IParams) => ({
   session: sessionData,
@@ -47,3 +48,19 @@ export const reactionData: IReactionDocument = {
   userTo: '64c39e675f5517f7faebb525',
   type: 'love'
 } as IReactionDocument;
+
+export const commentsData: ICommentDocument = {
+  _id: '64dcb0d15c2b29ea148d717d',
+  username: 'Danny',
+  avatarColor: '#9c27b0',
+  postId: '64db5f49e52e07570c1ddd70',
+  profilePicture: 'https://res.cloudinary.com/ratingapp/image/upload/64c39e675f5517f7faebb525',
+  comment: 'This is a comment',
+  createdAt: new Date(),
+  userTo: '	64c39e675f5517f7faebb525'
+} as unknown as ICommentDocument;
+
+export const commentNames: ICommentNameList = {
+  count: 1,
+  names: ['Danny']
+};
