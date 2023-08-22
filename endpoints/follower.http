@@ -9,9 +9,22 @@ withCredentials: true
 
 
 ###
-PUT {{baseUrl}}/{{urlPath}}/user/unfollow/64df52709abf84133230a3d9/64c39e675f5517f7faebb525
+PUT {{baseUrl}}/{{urlPath}}/user/unfollow/64e3c2fdea8e49bb7358d33b/64e3c597ea8e49bb7358d355
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
 
 {}
+
+###
+GET {{baseUrl}}/{{urlPath}}/user/following
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+
+###
+GET {{baseUrl}}/{{urlPath}}/user/followers/64e3c2fdea8e49bb7358d33b
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
