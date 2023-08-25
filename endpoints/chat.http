@@ -13,7 +13,7 @@ withCredentials: true
   "receiverUsername": "Ganny",
   "receiverAvatarColor": "red",
   "receiverProfilePicture": "https://res.cloudinary.com/da1xnru4v/image/upload/v1692648855/64e3c597ea8e49bb7358d355",
-  "body": "Let's code",
+  "body": "No man",
   "gifUrl": "",
   "isRead": true,
   "selectedImage": ""
@@ -26,8 +26,8 @@ Accept: application/json
 withCredentials: true
 
 {
-  "userOne": "62f2962c6b761b208a728e91",
-  "userTwo": "62f29f71da585226216b2724"
+  "userOne": "64e3c2fdea8e49bb7358d33b",
+  "userTwo": "64e3c597ea8e49bb7358d355"
 }
 
 ###
@@ -48,13 +48,13 @@ Accept: application/json
 withCredentials: true
 
 ###
-GET {{baseUrl}}/{{urlPath}}/chat/message/user/62f29f71da585226216b2724
+GET {{baseUrl}}/{{urlPath}}/chat/message/user/64e3c597ea8e49bb7358d355
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
 
 ###
-DELETE {{baseUrl}}/{{urlPath}}/chat/message/mark-as-deleted/62f7df73cf260a4030a46700/62f2962c6b761b208a728e91/62f29f71da585226216b2724/deleteForEveryone
+DELETE {{baseUrl}}/{{urlPath}}/chat/message/mark-as-deleted/64e871d87f3ee55f3b9fe8f0/64e3c2fdea8e49bb7358d33b/64e3c597ea8e49bb7358d355/deleteForEveryone
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
@@ -66,8 +66,8 @@ Accept: application/json
 withCredentials: true
 
 {
-  "senderId": "62f2962c6b761b208a728e91",
-  "receiverId": "62f29f71da585226216b2724"
+  "senderId": "64e3c2fdea8e49bb7358d33b",
+  "receiverId": "64e3c597ea8e49bb7358d355"
 }
 
 ###
@@ -77,8 +77,8 @@ Accept: application/json
 withCredentials: true
 
 {
-  "conversationId": "62f7d664126558835a734ebc",
-  "messageId": "62f8bb615bde3fdef34eae82",
-  "reaction": "like",
-  "type": "add"
+  "conversationId": "64e7b84e45336a6b8f7852d4",
+  "messageId": "64e8f6e0f27cfcf661d3e930",
+  "reaction": "sad",
+  "type": "remove"
 }
