@@ -21,7 +21,7 @@ class UserWorker {
   async updateUserInfo(job: Job, done: DoneCallback): Promise<void> {
     try {
       const { key, value } = job.data;
-      // await userService.updateUserInfo(key, value);
+      await userService.updateUserInfo(key, value);
       job.progress(100);
       done(null, job.data);
     } catch (error) {
@@ -33,7 +33,7 @@ class UserWorker {
   async updateSocialLinks(job: Job, done: DoneCallback): Promise<void> {
     try {
       const { key, value } = job.data;
-      // await userService.updateSocialLinks(key, value);
+      await userService.updateSocialLinks(key, value);
       job.progress(100);
       done(null, job.data);
     } catch (error) {
@@ -45,7 +45,7 @@ class UserWorker {
   async updateNotificationSettings(job: Job, done: DoneCallback): Promise<void> {
     try {
       const { key, value } = job.data;
-      // await userService.updateNotificationSettings(key, value);
+      await userService.updateNotificationSettings(key, value);
       job.progress(100);
       done(null, job.data);
     } catch (error) {

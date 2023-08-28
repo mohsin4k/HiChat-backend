@@ -30,12 +30,26 @@ export interface IAuthMock {
   avatarColor?: string;
   avatarImage?: string;
   createdAt?: Date | string;
+  currentPassword?: string;
+  newPassword?: string;
   confirmPassword?: string;
+  quote?: string;
+  work?: string;
+  school?: string;
+  location?: string;
+  facebook?: string;
+  instagram?: string;
+  twitter?: string;
+  youtube?: string;
+  messages?: boolean;
+  reactions?: boolean;
+  comments?: boolean;
+  follows?: boolean;
 }
 
 export const authUserPayload: AuthPayload = {
-  userId: '60263f14648fed5246e322d9',
-  uId: '1621613119252066',
+  userId: '64e3c2fdea8e49bb7358d33b',
+  uId: '155374601869',
   username: 'Danny',
   email: 'danny@me.com',
   avatarColor: '#9c27b0',
@@ -43,8 +57,8 @@ export const authUserPayload: AuthPayload = {
 };
 
 export const authMock = {
-  _id: '60263f14648fed5246e322d3',
-  uId: '1621613119252066',
+  _id: '64e3c2fdea8e49bb7358d33b',
+  uId: '155374601869',
   username: 'Danny',
   email: 'danny@me.com',
   avatarColor: '#9c27b0',
@@ -53,8 +67,8 @@ export const authMock = {
 } as unknown as IAuthDocument;
 
 export const signUpMockData = {
-  _id: '605727cd646eb50e668a4e13',
-  uId: '92241616324557172',
+  _id: '64e3c2fdea8e49bb7358d33b',
+  uId: '155374601869',
   username: 'danny',
   email: 'danny@test.com',
   avatarColor: '#ff9800',
@@ -76,5 +90,5 @@ export const signUpMockData = {
   followersCount: 0,
   followingCount: 0,
   notifications: { messages: true, reactions: true, comments: true, follows: true },
-  profilePicture: 'https://res.cloudinary.com/ratingapp/image/upload/605727cd646eb50e668a4e13'
+  profilePicture: 'https://res.cloudinary.com/ratingapp/image/upload/64e3c2fdea8e49bb7358d33b'
 };
