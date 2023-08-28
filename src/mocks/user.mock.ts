@@ -21,7 +21,7 @@ export const mockExistingUser = {
   bgImageVersion: '',
   bgImageId: '',
   profilePicture: 'http://place-hold.it/500x500',
-  _id: '60263f14648fed5246e322d9',
+  _id: '64e3c2fdea8e49bb7358d33b',
   work: 'KickChat Inc.',
   school: 'University of Benin',
   location: 'Dusseldorf, Germany',
@@ -50,9 +50,9 @@ export const existingUser = {
   bgImageVersion: '',
   bgImageId: '',
   profilePicture: 'http://place-hold.it/500x500',
-  _id: '60263f14648fed5246e322d9',
-  uId: '1621613119252066',
-  username: 'danny',
+  _id: '64e3c2fdea8e49bb7358d33b',
+  uId: '155374601869',
+  username: 'Danny',
   email: 'danny@me.com',
   avatarColor: 'red',
   work: 'KickChat Inc.',
@@ -83,10 +83,10 @@ export const existingUserTwo = {
   bgImageVersion: '',
   bgImageId: '',
   profilePicture: 'http://place-hold.it/500x500',
-  _id: '60263f14648fed5246e322d8',
-  uId: '1621613119252065',
-  username: 'Danny',
-  email: 'danny@me.com',
+  _id: '64e3c308ea8e49bb7358d342',
+  uId: '549207788048',
+  username: 'Manny',
+  email: 'manny@me.com',
   avatarColor: '#9c27b1',
   work: 'KickChat Inc.',
   school: 'University of Benin',
@@ -95,12 +95,46 @@ export const existingUserTwo = {
   createdAt: new Date()
 } as unknown as IUserDocument;
 
+export const mergedAuthAndUserData = {
+  notifications: {
+    messages: false,
+    reactions: true,
+    comments: true,
+    follows: false
+  },
+  social: {
+    facebook: '',
+    instagram: '',
+    twitter: '',
+    youtube: ''
+  },
+  blocked: [],
+  blockedBy: [],
+  followersCount: 1,
+  followingCount: 2,
+  postsCount: 2,
+  bgImageVersion: '',
+  bgImageId: '',
+  profilePicture: 'http://place-hold.it/500x500',
+  _id: '64e3c308ea8e49bb7358d342',
+  authId: '64e3c597ea8e49bb7358d354',
+  uId: '549207788048',
+  username: 'Manny',
+  email: 'manny@me.com',
+  avatarColor: '#9c27b0',
+  work: 'KickChat Inc.',
+  school: 'University of Benin',
+  location: 'Dusseldorf, Germany',
+  quote: 'Sky is my limit',
+  createdAt: '2022-08-31T07:42:24.451Z'
+} as unknown as IUserDocument;
+
 export const searchedUserMock = {
   profilePicture: 'http://place-hold.it/500x500',
-  _id: '60263f14648fed5246e322d5',
-  uId: '1621613119252062',
-  username: 'Kenny',
-  email: 'ken@me.com',
+  _id: '64e3c597ea8e49bb7358d355',
+  uId: '772532065955',
+  username: 'Ganny',
+  email: 'gen@me.com',
   avatarColor: '#9c27b1'
 };
 

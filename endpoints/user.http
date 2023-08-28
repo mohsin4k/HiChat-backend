@@ -45,9 +45,9 @@ Accept: application/json
 withCredentials: true
 
 {
-  "currentPassword": "",
-  "newPassword": "",
-  "confirmPassword": ""
+  "currentPassword": "querty",
+  "newPassword": "querty1",
+  "confirmPassword": "querty1"
 }
 
 ###
@@ -57,10 +57,10 @@ Accept: 'application/json'
 withCredentials: true
 
 {
-  "quote": "",
+  "quote": "Do it now",
   "work": "",
-  "school": "",
-  "location": ""
+  "school": "Amity",
+  "location": "Noida"
 }
 
 ###
@@ -72,8 +72,8 @@ withCredentials: true
 {
   "instagram": "",
   "twitter": "",
-  "facebook": "",
-  "youtube": ""
+  "facebook": "https://www.facebook.com/",
+  "youtube": "https://www.youtube.com/"
 }
 
 ###
