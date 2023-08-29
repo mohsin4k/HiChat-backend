@@ -13,6 +13,7 @@ import compression from 'compression';
 import { config } from '@root/config';
 import applicationRoutes from '@root/routes';
 import Logger from 'bunyan';
+import apiStats from 'swagger-stats';
 import { CustomError, IErrorResponse } from '@global/helpers/error-handler';
 import { SocketIOPostHandler } from '@socket/post';
 import { SocketIOFollowerHandler } from '@socket/follower';
@@ -36,6 +37,7 @@ export class HiChatServer {
     this.securityMiddleware(this.app);
     this.standardMiddleware(this.app);
     this.routeMiddleware(this.app);
+    this.apiMonitoring(this.app);
     this.globalErrorHandler(this.app);
     this.startServer(this.app); // since startServer is a public method hence we are calling it in a public method
   }
@@ -72,6 +74,16 @@ export class HiChatServer {
     applicationRoutes(app);
   }
 
+
+  private apiMonitoring(app: Application): void {
+    app.use(
+      apiStats.getMiddleware({
+        uriPath: '/api-monitoring'
+      })
+    );
+  }
+
+
   private globalErrorHandler(app: Application): void {
     app.all('*', (req: Request, res: Response) => {
       res.status(HTTP_STATUS.NOT_FOUND).json({ message: `${req.originalUrl} not found` });
@@ -88,6 +100,9 @@ export class HiChatServer {
   }
 
   private async startServer(app: Application): Promise<void> { // any method which uses async returns a promise method
+    if (!config.JWT_TOKEN) {
+      throw new Error('JWT_TOKEN must be provided');
+    }
     try {
       const httpServer: http.Server = new http.Server(app); // here we are naming the method as server but has http.Server becoz socket.io has a similar method named Server so in order to avoid any issue in future we are using http.Server
       const socketIO: Server = await this.createSocketIO(httpServer);
@@ -114,6 +129,7 @@ export class HiChatServer {
   }
 
   private startHttpServer(httpServer: http.Server): void {
+    log.info(`Worker with process id of ${process.pid} has started...`);
     log.info(`Server has started with process ${process.pid}`);
     httpServer.listen(SERVER_PORT, () => {
       log.info(`Server running on port ${SERVER_PORT}`); // node js suggest not using console.log so in future we will also be using log library as it is more lightweight
